@@ -556,6 +556,19 @@ export class AnnotationFactory {
     }
 
     /**
+     * Get the adapted PDF document blob
+     * */
+    blob() {
+        let a: any = document.createElement("a");
+        document.body.appendChild(a);
+        a.style = "display: none";
+
+        let extended_pdf = this.write()
+        let blob = new Blob([extended_pdf], { type: "application/pdf" })
+        return blob
+    }
+
+    /**
      * Saves the adapted PDF document in a nodejs environment and downloads it in a browser environment.
      * */
     save(fileName: string = "output.pdf") {
