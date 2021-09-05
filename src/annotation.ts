@@ -119,10 +119,10 @@ export class AnnotationFactory {
                     reader.readAsArrayBuffer(data)
                 })
             } else if (typeof process === 'object') { // node environment
-                let fs = require('fs')
-                let data = fs.readFileSync(path)
+                // let fs = require('fs')
+                // let data = fs.readFileSync(path)
 
-                resolve(new AnnotationFactory(data, userPassword, ownerPassword))
+                // resolve(new AnnotationFactory(data, userPassword, ownerPassword))
             } else {
                 throw Error("Unsupported environment")
             }
@@ -575,13 +575,13 @@ export class AnnotationFactory {
         if (typeof window !== 'undefined') { // browser environment
             this.download(fileName)
         } else if (typeof process === 'object') { // node environment
-            const fs = require('fs')
-            let data = this.write()
-            fs.writeFile(fileName, Buffer.from(new Uint8Array(data)), (err: any) => {
-                if (err) {
-                    throw Error(err);
-                }
-            })
+            // const fs = require('fs')
+            // let data = this.write()
+            // fs.writeFile(fileName, Buffer.from(new Uint8Array(data)), (err: any) => {
+            //     if (err) {
+            //         throw Error(err);
+            //     }
+            // })
         } else {
             throw Error("Unsupported environment")
         }
